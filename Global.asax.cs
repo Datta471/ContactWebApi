@@ -13,5 +13,17 @@ namespace ContactWebApi
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
+
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.MapHttpRoute(
+                name: "MyTSPRoute",
+                routeTemplate: "api/VTRouting/TSPRoute",
+                defaults: new { }); 
+            routes.MapHttpRoute(
+                name: "MyRoute",
+                routeTemplate: "api/VTRouting/Route", 
+                defaults: new { action = "Route" });
+        }
     }
 }
