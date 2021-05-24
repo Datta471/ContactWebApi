@@ -89,27 +89,27 @@ namespace ContactWebApi.Models
         {
             List<Contact> list = new List<Contact>();
 
-            xmlDoc = XDocument.Load("C:/Users/D770773/Desktop/ContactData.xml");   //add xml document  
-            var bind = xmlDoc.Descendants("contact").Select(p => new
+            xmlDoc = XDocument.Load("C:/TestContact/ContactData.xml");  
+            var data = xmlDoc.Descendants("Contact").Select(p => new
             {
-                Id = p.Element("id").Value,
+                Id = p.Element("id").Value.ToString(),
                 FirstName = p.Element("first_name").Value,
                 LastName = p.Element("last_name").Value,
                 Email = p.Element("email").Value,
-                PhoneNumber = p.Element("phone_number").Value,
-                Status = p.Element("status").Value
+                PhoneNumber = p.Element("phone_number").Value.ToString(),
+                Status = p.Element("status").Value.ToString()
             });
 
-            foreach (var item in bind)
+            foreach (var item in data)
             {
                 list.Add(new Contact() { Id = new Guid(item.Id), FirstName = item.FirstName, LastName = item.LastName, Email = item.Email, PhoneNumber = Convert.ToInt64(item.PhoneNumber), Status = Convert.ToBoolean(item.Status) });
             }
-            return list;// bind;
+            return list;
         }
 
         public void AddContact(Contact con)
         {
-            xmlDoc = XDocument.Load("C:/Users/D770773/Desktop/ContactData.xml");   //add xml document  
+            xmlDoc = XDocument.Load("C:/TestContact/ContactData.xml"); 
             XElement contact = new XElement("Contact",
                     new XElement("id", Guid.NewGuid()),
                     new XElement("first_name", con.FirstName),
@@ -118,12 +118,12 @@ namespace ContactWebApi.Models
                     new XElement("phone_number", con.PhoneNumber),
                     new XElement("status", con.Status));
             xmlDoc.Root.Add(contact);
-            xmlDoc.Save("C:/Users/D770773/Desktop/ContactData.xml");
+            xmlDoc.Save("C:/TestContact/ContactData.xml");
         }
 
         public void UpdateContact(Contact con)
         {
-            xmlDoc = XDocument.Load("C:/Users/D770773/Desktop/ContactData.xml");
+            xmlDoc = XDocument.Load("C:/TestContact/ContactData.xml");
             XElement contact = xmlDoc.Descendants("Contact").FirstOrDefault(p => p.Element("id").Value == con.Id.ToString());
             if (contact != null)
             {
@@ -133,18 +133,18 @@ namespace ContactWebApi.Models
                 contact.Element("phone_number").Value = con.PhoneNumber.ToString();
                 contact.Element("status").Value = con.Status.ToString();
                 xmlDoc.Root.ReplaceWith(contact);
-                xmlDoc.Save("C:/Users/D770773/Desktop/ContactData.xml");
+                xmlDoc.Save("C:/TestContact/ContactData.xml");
             }
         }
 
         public void DeleteContact(Guid id)
         {
-            xmlDoc = XDocument.Load("C:/Users/D770773/Desktop/ContactData.xml");   //add xml document  
+            xmlDoc = XDocument.Load("C:/TestContact/ContactData.xml");  
             XElement contact = xmlDoc.Descendants("Contact").FirstOrDefault(p => p.Element("id").Value == id.ToString());
             if (contact != null)
             {
                 contact.Remove();
-                xmlDoc.Save("C:/Users/D770773/Desktop/ContactData.xml");
+                xmlDoc.Save("C:/TestContact/ContactData.xml");
             }
         }
     }

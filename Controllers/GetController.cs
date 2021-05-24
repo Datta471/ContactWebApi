@@ -19,11 +19,13 @@ namespace ContactWebApi.Controllers
 
         public IHttpActionResult GetContact()
         {
+            Contacts = contact.GetContacts();
             return Ok(Contacts);
         }
 
         public IHttpActionResult GetContact(Guid id)
         {
+            Contacts = contact.GetContacts();
             return Ok(Contacts.Find(c => c.Id == id));
         }
     }

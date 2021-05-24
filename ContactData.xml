@@ -1,25 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<contact>
-  <id>1</id>
-  <first_name>Sachin</first_name>
-  <last_name>Tendulkar</last_name>
-  <email>sachin.tendulkar@gmail.com</email>
-  <phone_number>1122334455</phone_number>
-  <status>Active</status>
-</contact>
-<contact>
-  <id>2</id>
-  <first_name>Rohit</first_name>
-  <last_name>Sharma</last_name>
-  <email>rohit.sharma@gmail.com</email>
-  <phone_number>5152535455</phone_number>
-  <status>Inactive</status>
-</contact>
-<contact>
-  <id>3</id>
-  <first_name>Virat</first_name>
-  <last_name>Kohli</last_name>
-  <email>virat.kohli@gmail.com</email>
-  <phone_number>1121314151</phone_number>
-  <status>Active</status>
-</contact>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Contacts>
+  <Contact>
+    <id>6b81add1-86da-4dea-89aa-b188c64516a7</id>
+    <first_name>Rohit</first_name>
+    <last_name>Sharma</last_name>
+    <email>rohit.sharma@gmail.com</email>
+    <phone_number>5152535455</phone_number>
+    <status>false</status>
+  </Contact>
+</Contacts>
